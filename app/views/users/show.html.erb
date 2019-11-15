@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <h2>ユーザー情報</h2>
+                <table class="table table-bordered" style="table-layout:fixed;">
+                    <thead>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th style="width:100px;">名前</th>
+                            <td style="width:200px;"><%= @user.name %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <%= link_to "編集", edit_user_path(@user.id), class:'btn btn-warning' %>
+                </div>
+        </div>
+        <div class="col-md-10">
+        </div>
+    </div>
+</div>
