@@ -3,7 +3,7 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
     create_table :photos do |t|
       t.text :title, null: false
       t.text :caption, null: false
-      t.text :image_id
+      t.string :image, null: false
       t.text :location
       t.integer :user_id, null: false
 

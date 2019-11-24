@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="photo-image-box">
+                <% if @photo.image? %>
+                    <%= image_tag @photo.image.url %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-bordered">
+                <thead>
+                    <th>タイトル</th>
+                    <th>本文</th>
+                    <th>撮影地</th>
+                </thead>
+                <tbody>
+                    <td><%= @photo.title %></td>
+                    <td><%= @photo.caption %></td>
+                    <td><%= @photo.location %></td>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <input id="address" type="textbox" value="Sydney, NSW">
+            <input type="button" value="Encode" onclick="codeAddress()">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>

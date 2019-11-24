@@ -1,0 +1,8 @@
+<div class="container">
+    <p>title</p>
+    <% @photos.each do |photo| %>
+        <%= link_to photo_path(photo.id) do %>
+            <%= photo.title %>
+        <% end %>
+    <% end %>
+</div>

@@ -4,11 +4,45 @@
     <title>MomentaryScenery</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh9nDJL4r1JF_nO9kXqwWtSBQSnjPIp_I&callback=initMap" async defer></script>
   </head>
-
+  <header>
+    <% if user_signed_in? %>
+    <div class="flex02">
+      <p>ようこそ<%= current_user.name %>さん<br>
+        マイページは<%= link_to "こちら", user_path(current_user.id) %>
+      </p>
+    </div>
+  </div>
+  <div class="header-bottom">
+      <ul class="nav nav-pills nav-justified">
+        <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
+        <li role="presentation" class="active"><%= link_to "投稿", new_photo_path(current_user.id), class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
+        <li role="presentation" class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
+        <li role="presentation" class="active"><%= link_to "掲示板", boards_path, class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
+      </ul>
+  </div>
+  <% else %>
+      <div class="flex02">
+        <p>こんにちはゲストさん<br>
+          無料会員登録は<%= link_to "こちら", new_user_registration_path %><br>
+          すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
+        </p>
+      </div>
+    </div>
+  <div class="header-bottom">
+    <ul class="nav nav-pills nav-justified">
+      <li role="presentation" class="active `**clearfix**`"><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+      <li role="presentation" class="active `**clearfix**`"><%= link_to "新規会員登録", new_user_registration_path, class: "glyphicon glyphicon-triangle-right" %></li>
+      <li role="presentation" class="active"><%= link_to "掲示板", boards_path, class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
+    </ul>
+  </div>
+  <% end %>
   <body>
     <%= yield %>
   </body>

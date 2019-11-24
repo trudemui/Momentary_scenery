@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="post-box">
+        <%= form_for(@photo) do |f| %>
+        
+            <div class="form-group">
+                <%= f.label :title, 'タイトル' %>
+                <%= f.text_field :title, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :caption, '本文' %>
+                <%= f.text_area :caption, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :location, '撮影地' %>
+                <%= f.text_field :location, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :image, '画像' %>
+                <%= f.file_field :image %>
+            </div>
+            <%= f.submit "保存", class: 'btn btn-default' %>
+        <% end %>
+    </div>
+</div>
