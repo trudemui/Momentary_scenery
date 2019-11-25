@@ -15,3 +15,15 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#container{
+    margin: 40px auto;
+    height: 200px;
+    width: 80%;
+    // margin: 100px;
+    }
+
+#theTarget {
+    text-align: center;
+    background-image: image-url("background.jpg");
+    }

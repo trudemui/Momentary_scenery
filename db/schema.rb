@@ -39,7 +39,11 @@ ActiveRecord::Schema.define(version: 2019_11_24_115943) do
     t.text "title", null: false
     t.text "caption", null: false
     t.string "image", null: false
-    t.text "location"
+    t.string "address"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "latitudeRef"
+    t.string "longitudeRef"
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

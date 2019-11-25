@@ -37,11 +37,19 @@ class ImageUploader < CarrierWave::Uploader::Base
   # For images you might use something like this:
   def extension_whitelist
     %w(jpg jpeg png)
+    # binding.pry
   end
+
+  process :get_exif_info
 
   def get_exif_info
     exif = Magick::Image.read(self.file.file).first
-    binding.pry
+    latitude = exif.properties["exif:GPSLatitude"]
+    longitude = exif.properties["exif:GPSLongitude"]
+    latitudeRef = exif.properties["exif:GPSLatitudeRef"]
+    longitudeRef = exif.properties["exif:GPSLongitudeRef"]
+    # binding.pry
+    return latitude, longitude, latitudeRef, longitudeRef
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

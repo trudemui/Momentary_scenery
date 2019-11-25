@@ -1,12 +1,13 @@
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-md-offset-1">
             <h2>ユーザー情報</h2>
                 <table class="table table-bordered" style="table-layout:fixed;">
                     <thead>
                         <tr>
                             <th style="width:100px;">ユーザー画像</th>
-                            <td style="width:200px;"><% if @user.image? %>
-            　　                <%= image_tag @user.image.thumb.url %>
+                            <td style="width:200px;">
+                            <% if @user.image? %>
+                                <%= image_tag @user.image.thumb.url %>
                             <% end %></td>
                         </tr>
                     </thead>
@@ -16,42 +17,40 @@
                             <td style="width:200px;"><%= @user.nickname %></td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <%= link_to "編集", edit_user_path(@user.id), class:'btn btn-warning' %>
-                        </tr>
-                    </tfoot>
                 </table>
+            <%= link_to "編集", edit_user_path(@user.id), class:'btn btn-warning' %>
         </div>
-        <div class="col-md-9">
-            <div class="photo-box">
-                <h2>投稿写真</h2>
-                    <% @photos.each do |photo| %>
-                        <div class="col-md-2">
-                            <div class="user-photo-box">
-                                <%= image_tag photo.image.thumb.to_s %>
-                                <%= link_to "#{photo.title}", photo_path(photo.id) %>
-                            </div>
+        <div class="col-md-7">
+            <h2>投稿写真</h2>
+                <% @photos.each do |photo| %>
+                    <div class="photo-box">
+                        <%= image_tag photo.image.thumb.to_s %>
+                        <div class="photo-text">
+                            <%= link_to "#{photo.title}", photo_path(photo.id) %>
                         </div>
-                    <% end %>
-                    <%= link_to '投稿写真一覧へ', photos_user_path(@user.id) %>
-            </div>
+                    </div>
+                <% end %>
+                <div class="photos_button">
+                    <button class="button1"><%= link_to '投稿写真一覧へ', photos_user_path(@user.id) %></button>
+                </div>
         </div>
-        <div class="col-md-9 col-md-offset-3">
+        <div class="col-md-7 col-md-offset-4">
             <div class="favorite-box">
                 <h2>お気に入り写真</h2>
                     <% @favorites.each do |photo| %>
-                        <div class="col-md-2">
                             <div class="photo-box">
                                 <%= image_tag photo.image.thumb.to_s %>
-                                <%= link_to "#{photo.title}", photo_path(photo.id) %>
+                                <div class="photo-text">
+                                    <%= link_to "#{photo.title}", photo_path(photo.id) %>
+                                </div>
                             </div>
-                        </div>
                     <% end %>
-                <%= link_to 'お気に入り写真一覧へ', user_favorites_path(@user.id) %>
+                    <div class="photos_button">
+                        <button class="button1"><%= link_to 'お気に入り写真一覧へ', user_favorites_path(@user.id) %></button>
+                    </div>
             </div>
         </div>
     </div>
-        <div class="btn btn-default">
-            <%= link_to 'トップページへ戻る', root_path %>
+        <div class="top_button">
+            <button class="button1"><%= link_to 'トップページへ戻る', root_path, data: {"turbolinks" => false} %></button>
         </div>

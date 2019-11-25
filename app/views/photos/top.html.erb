@@ -1,6 +1,6 @@
 <div class="container">
     <div class="col-md-9">
-        <div class="row" id="container">
+        <div id="container">
                 <div id="theTarget">
                     <% @slide_photos.each do |photo| %>
                         <div class="image1">
@@ -15,28 +15,29 @@
         <h2>新着写真</h2>
             <div class="row">
                 <% @new_photos.each do |photo| %>
-                    <div class="col-md-3">
-                        <div class="photo-box">
+                    <div class="photo-box">
                             <%= link_to photo_path(photo.id) do %>
                                 <%= image_tag photo.image.thumb.to_s %>
                             <% end %>
-                        </div>
                     </div>
                 <% end %>
             </div>
+            <%= link_to '写真一覧へ', photos_path, class: 'btn btn-default' %>
     </div>
     <div class="col-md-3">
-        <div class="favorite-ranking">
-            <% @favorite_ranks.each .with_index(1) do |photo| %>
-                <div class="photo-box">
-                    <%= link_to photo_path(photo.id) do %>
-                        <%= image_tag photo.image.thumb.to_s %>
-                    <% end %>
-                </div>
-                <div class="text-box">
-                    <%= link_to "#{photo.title}", photo_path(photo.id) %>
-                </div>
-            <% end %>
-        </div>
+        <h3>お気に入りランキング</h3>
+            <div class="favorite-ranking">
+                <% @favorite_ranks.each.with_index(1) do |photo, i| %>
+                    <div class="photo-box">
+                        <div style="padding-bottom: 20px;"><%= "第#{i}位" %></div>
+                        <%= link_to photo_path(photo.id) do %>
+                            <%= image_tag photo.image.thumb.to_s %>
+                        <% end %>
+                    </div>
+                    <div class="photo-text">
+                        <%= link_to "#{photo.title}", photo_path(photo.id) %>
+                    </div>
+                <% end %>
+            </div>
     </div>
 </div>

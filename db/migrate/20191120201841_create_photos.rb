@@ -4,7 +4,11 @@ class CreatePhotos < ActiveRecord::Migration[5.2]
       t.text :title, null: false
       t.text :caption, null: false
       t.string :image, null: false
-      t.text :location
+      t.string :address
+      t.string :latitude
+      t.string :longitude
+      t.string :latitudeRef
+      t.string :longitudeRef
       t.integer :user_id, null: false
 
       t.timestamps

@@ -9,9 +9,9 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
+    <script src="assets/skippr.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh9nDJL4r1JF_nO9kXqwWtSBQSnjPIp_I&callback=initMap" async defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="assets/skippr.js"></script>
     
   </head>
   <header>
@@ -25,7 +25,7 @@
   <div class="header-bottom">
       <ul class="nav nav-pills nav-justified">
         <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
-        <li role="presentation" class="active"><%= link_to "投稿", new_photo_path(current_user.id), class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
+        <li role="presentation" class="active"><%= link_to "投稿", new_photo_path, class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
         <li role="presentation" class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
         <li role="presentation" class="active"><%= link_to "掲示板", boards_path, class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
       </ul>

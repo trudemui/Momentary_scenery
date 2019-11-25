@@ -2,16 +2,16 @@
     <div class="row">
         <% @photos.each do |photo| %>
             <div class="col-md-3">
-                <div class="user-photo-box">
+                <div class="photo-box">
                     <%= image_tag photo.image.thumb.to_s %>
                 </div>
-                <div class="text-box">
+                <div class="photo-text">
                     <%= link_to "#{photo.title}", photo_path(photo.id) %>
                 </div>
             </div>
         <% end %>
     </div>
-    <div class="btn">
-        <%= link_to 'トップページへ戻る', root_path, class:'btn btn-default' %>
-    </div>
+    <div class="top_button">
+            <button class="button1"><%= link_to 'トップページへ戻る', root_path, data: {"turbolinks" => false} %></button>
+        </div>
 </div>

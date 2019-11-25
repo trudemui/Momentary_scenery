@@ -5,18 +5,42 @@
     height: 400px;
   }
 
-#container{
-  margin: 50px auto;
-  height: 200px;
-  width: 70%;
-  // margin: 100px;
+  .image1 {
+    text-align: center;
   }
 
-  #theTarget {
-  text-align: center;
-  // background-image: image-url("background_10.jpg");
+  .photo-box {
+    padding: 15px;
+    margin: 10px 0 0 10px;
+    display: inline-block;
   }
-  
-  .image1 {
+  .text-box {
+    text-align: center;
+  }
+  .favorite-rankings {
+    padding: 5%;
+    width: 180px;
+    height: 180px;
+    margin: 0 -15px;
+  }
+  .col-md-12 {
+    text-align: center;
+    margin: 20px 0 20px 0;
+  }
+  .top_button {
+    text-align: center;
+    margin: 20px 0 20px 0;
+  }
+  .photo-text {
+    text-align: center;
+    margin-top: 10px;
+  }
+  .container {
+    margin-top: 20px;
+  }
+  .row {
+    margin-top: 20px;
+  }
+  .pagenate {
     text-align: center;
   }
