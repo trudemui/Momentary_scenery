@@ -1,0 +1,11 @@
+    <% if favorite.favorited_by?(current_user) %>
+        <button>
+            <%= link_to photo_favorites_path(favorite.id), method: :delete, remote: true do %>
+                <i class="fas fa-heart" style="color: red;">お気に入り済み</i>
+            <% end %>
+    <% else %>
+            <%= link_to photo_favorites_path(favorite.id), method: :post, remote: true do %>
+                <i class="far fa-heart" style="color: red;">お気に入りする</i>
+            <% end %>
+        </button>
+    <% end %>

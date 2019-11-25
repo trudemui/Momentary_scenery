@@ -1,0 +1,11 @@
+<div class="favorite-box">
+    <div class="row">
+        <% @favorites.each do |photo| %>
+            <div class="col-md-2">
+                <div class="photo-box">
+                    <%= image_tag photo.image.thumb.to_s %>
+                    <%= link_to "#{photo.title}", photo_path(photo.id) %>
+                </div>
+            </div>
+        <% end %>
+</div>

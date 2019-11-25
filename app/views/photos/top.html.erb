@@ -1,8 +1,42 @@
 <div class="container">
-    <p>title</p>
-    <% @photos.each do |photo| %>
-        <%= link_to photo_path(photo.id) do %>
-            <%= photo.title %>
-        <% end %>
-    <% end %>
+    <div class="col-md-9">
+        <div class="row" id="container">
+                <div id="theTarget">
+                    <% @slide_photos.each do |photo| %>
+                        <div class="image1">
+                            <%= link_to photo_path(photo.id) do %>
+                                <%= image_tag photo.image.thumb.to_s %>
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+        </div>
+
+        <h2>新着写真</h2>
+            <div class="row">
+                <% @new_photos.each do |photo| %>
+                    <div class="col-md-3">
+                        <div class="photo-box">
+                            <%= link_to photo_path(photo.id) do %>
+                                <%= image_tag photo.image.thumb.to_s %>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+    </div>
+    <div class="col-md-3">
+        <div class="favorite-ranking">
+            <% @favorite_ranks.each .with_index(1) do |photo| %>
+                <div class="photo-box">
+                    <%= link_to photo_path(photo.id) do %>
+                        <%= image_tag photo.image.thumb.to_s %>
+                    <% end %>
+                </div>
+                <div class="text-box">
+                    <%= link_to "#{photo.title}", photo_path(photo.id) %>
+                </div>
+            <% end %>
+        </div>
+    </div>
 </div>

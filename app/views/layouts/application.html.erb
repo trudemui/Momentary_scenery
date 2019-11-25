@@ -10,11 +10,14 @@
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh9nDJL4r1JF_nO9kXqwWtSBQSnjPIp_I&callback=initMap" async defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/skippr.js"></script>
+    
   </head>
   <header>
     <% if user_signed_in? %>
     <div class="flex02">
-      <p>ようこそ<%= current_user.name %>さん<br>
+      <p>ようこそ<%= current_user.nickname %>さん<br>
         マイページは<%= link_to "こちら", user_path(current_user.id) %>
       </p>
     </div>

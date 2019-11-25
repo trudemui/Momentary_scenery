@@ -18,6 +18,7 @@ class PhotosController < ApplicationController
 
     def show
         @photo = Photo.find(params[:id])
+        # @photo.user_id = current_user.id
     end
 
     def edit
@@ -37,7 +38,9 @@ class PhotosController < ApplicationController
     end
 
     def top
-        @photos = Photo.all
+        @slide_photos = Photo.all.order(created_at: :desc).limit(10)
+        @favorite_ranks = Photo.find(Favorite.group(:photo_id).order('count(photo_id) desc').limit(3).pluck(:photo_id))
+        @new_photos =Photo.order(created_at: :desc).limit(20)
         # @photo = Photo.find(params[:id])
     end
     private

@@ -11,23 +11,36 @@
     <div class="row">
         <div class="col-md-6">
             <table class="table table-bordered">
-                <thead>
+                <tr>
+                    <th>ユーザー名</th>
+                    <td><%= @photo.user.nickname %></td>
+                </tr>
+                <tr>
                     <th>タイトル</th>
-                    <th>本文</th>
-                    <th>撮影地</th>
-                </thead>
-                <tbody>
                     <td><%= @photo.title %></td>
+                </tr>
+                <tr>
+                    <th>本文</th>
                     <td><%= @photo.caption %></td>
+                </tr>
+                <tr>
+                    <th>撮影地</th>
                     <td><%= @photo.location %></td>
-                </tbody>
+                </tr>
             </table>
+            <div class="favorite_btn">
+                        <div class="favorite-button-<%=@photo.id %>">
+                            <%= render 'favorites/favorite', photo: @photo %>
+                        </div>
+            </div>
         </div>
-
         <div class="col-md-6">
-            <input id="address" type="textbox" value="Sydney, NSW">
+            <input id="address" type="textbox" value="東京">
             <input type="button" value="Encode" onclick="codeAddress()">
             <div id="map"></div>
         </div>
+    </div>
+    <div class="btn btn-default">
+        <%= link_to 'トップページへ戻る', root_path %>
     </div>
 </div>
