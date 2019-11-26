@@ -25,7 +25,7 @@
                 </tr>
                 <tr>
                     <th>撮影地</th>
-                    <td><%= @photo.latitudeRef %><%= @photo.latitude %>/<%= @photo.longitudeRef %><%= @photo.longitude %></td>
+                    <td><%= @photo.latitude %>,<%= @photo.longitude %></td>
                 </tr>
             </table>
             <div class="favorite_btn">
@@ -43,4 +43,5 @@
     <div class="top_button">
         <button class="button1"><%= link_to 'トップページへ戻る', root_path, data: {"turbolinks" => false} %></button>
     </div>
+    
 </div>

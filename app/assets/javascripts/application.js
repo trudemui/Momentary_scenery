@@ -29,6 +29,10 @@ function initMap(){
   center: {lat: 35.681236, lng: 139.767125},
   zoom: 16
   });
+  marker = new google.maps.Marker({
+  map: map,
+    osition: results[0].geometry.location
+  });
 }
 
 function codeAddress(){
@@ -42,10 +46,6 @@ function codeAddress(){
       map.setCenter(results[0].geometry.location);
 
 　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
