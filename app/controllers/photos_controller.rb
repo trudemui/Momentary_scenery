@@ -8,9 +8,10 @@ class PhotosController < ApplicationController
     end
 
     def create
+        
         @photo = Photo.new(photo_params)
         @photo.user_id = current_user.id
-        @photo_latitude = @photo.image.get_exif_info[0]
+        if @photo_latitude = @photo.image.get_exif_info[0]
         @cut_latitude = @photo_latitude.split(",")
         @num_latitude = @cut_latitude.map!(&:to_i)
         @a = @cut_latitude.map!(&:to_i).first
@@ -25,12 +26,16 @@ class PhotosController < ApplicationController
         @f = @cut_longitude.map!(&:to_i).third
         @photo.longitude = @d/1 + @e/60.to_f + @f/3600000.to_f
         @photo.save
+        else
+        @photo.save
+        end
         redirect_to photo_path(@photo)
     end
     
     def index
-        @photos = Photo.all
-        @photos = Photo.page(params[:page]).per(PER)
+        @photos = params[:tag_id].present? ? Tag.find(params[:tag_id]).photos : Photo.all
+        @photos = @photos.page(params[:page]).per(PER)
+        # @photos = Photo.page(params[:page]).per(PER)
     end
     
     def show
@@ -66,6 +71,6 @@ class PhotosController < ApplicationController
     private
 
     def photo_params
-        params.require(:photo).permit(:title, :caption, :image, :address, :user_id, :longitude, :latitude)
+        params.require(:photo).permit(:title, :caption, :image, :address, :user_id, :longitude, :latitude, tag_ids: [])
     end
 end

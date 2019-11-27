@@ -13,31 +13,33 @@
         </div>
 
         <h2>新着写真</h2>
-            <div class="row">
-                <% @new_photos.each do |photo| %>
-                    <div class="photo-box">
-                            <%= link_to photo_path(photo.id) do %>
-                                <%= image_tag photo.image.thumb.to_s %>
-                            <% end %>
-                    </div>
-                <% end %>
-            </div>
+                <div class="row">
+                    <% @new_photos.each do |photo| %>
+                        <div class="photo-box">
+                                <%= link_to photo_path(photo.id) do %>
+                                    <%= image_tag photo.image.thumb.to_s %>
+                                <% end %>
+                        </div>
+                    <% end %>
+                </div>
             <%= link_to '写真一覧へ', photos_path, class: 'btn btn-default' %>
     </div>
     <div class="col-md-3">
         <h3>お気に入りランキング</h3>
-            <div class="favorite-ranking">
-                <% @favorite_ranks.each.with_index(1) do |photo, i| %>
-                    <div class="photo-box">
-                        <div style="padding-bottom: 20px;"><%= "第#{i}位" %></div>
-                        <%= link_to photo_path(photo.id) do %>
-                            <%= image_tag photo.image.thumb.to_s %>
-                        <% end %>
-                    </div>
-                    <div class="photo-text">
-                        <%= link_to "#{photo.title}", photo_path(photo.id) %>
-                    </div>
-                <% end %>
+            <div class="box">
+                <div class="favorite-ranking">
+                    <% @favorite_ranks.each.with_index(1) do |photo, i| %>
+                        <div class="favorite-photo-box">
+                            <div style="margin: 20px;"><%= "第#{i}位" %></div>
+                            <%= link_to photo_path(photo.id) do %>
+                                <%= image_tag photo.image.thumb.to_s %>
+                            <% end %>
+                        <div class="favorite-text">
+                            <%= link_to "#{photo.title}", photo_path(photo.id) %>
+                        </div>
+                        </div>
+                    <% end %>
+                </div>
             </div>
     </div>
 </div>

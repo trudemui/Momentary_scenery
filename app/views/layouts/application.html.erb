@@ -14,26 +14,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
   </head>
-  <header>
+  <header class="clearfix">
+    <div class="logo">
+      <%= link_to root_path,data: {"turbolinks" => false} do %>
+        <%= image_tag "momentary_scenely.jpg" %>
+      <% end %>
+    </div>
+
     <% if user_signed_in? %>
-    <div class="flex02">
+    <div class="text">
       <p>ようこそ<%= current_user.nickname %>さん<br>
-        マイページは<%= link_to "こちら", user_path(current_user.id) %>
+        マイページは<%= link_to "ここ！", user_path(current_user.id) %>
       </p>
     </div>
   </div>
   <div class="header-bottom">
       <ul class="nav nav-pills nav-justified">
         <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
-        <li role="presentation" class="active"><%= link_to "投稿", new_photo_path, class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
+        <li role="presentation" class="active"><%= link_to "投稿", new_photo_path, class: "glyphicon glyphicon-picture", style: "font-size: 14px;" %></li>
         <li role="presentation" class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
-        <li role="presentation" class="active"><%= link_to "掲示板", boards_path, class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
+        <li role="presentation" class="active"><%= link_to "掲示板", boards_path, class: "glyphicon glyphicon-list-alt", style: "font-size: 14px;" %></li>
       </ul>
   </div>
   <% else %>
-      <div class="flex02">
+      <div class="text">
         <p>こんにちはゲストさん<br>
-          無料会員登録は<%= link_to "こちら", new_user_registration_path %><br>
+          無料会員登録は<%= link_to "ここ！", new_user_registration_path %><br>
           すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
         </p>
       </div>

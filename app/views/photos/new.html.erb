@@ -1,7 +1,6 @@
 <div class="container">
     <div class="post-box">
         <%= form_for(@photo) do |f| %>
-        
             <div class="form-group">
                 <%= f.label :title, 'タイトル' %>
                 <%= f.text_field :title, class: 'form-control' %>
@@ -18,6 +17,15 @@
                 <%= f.label :image, '画像' %>
                 <%= f.file_field :image %>
             </div>
+            <p>タグ</p>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                <div class="form-check">
+                    <%= tag.label class: 'form-check-label' do %>
+                        <%= tag.check_box class: 'form-check-input' %>
+                        <%= tag.text %>
+                    <% end %>
+                </div>
+            <% end %>
             <%= f.submit "保存", class: 'btn btn-default' %>
         <% end %>
     </div>

@@ -13,7 +13,7 @@ class User < ApplicationRecord
     presence: true
   validates :last_kana_name, format: { with: /\A^([ァ-ン]|ー)+$\z/ }, length: { minimum: 1, maximum: 10 },
     presence: true
-    validates :nickname, format: { with: /\A^[一-龥ぁ-ん]+\z/ }, length: { minimum: 1, maximum: 10 },
+    validates :nickname, length: { minimum: 1, maximum: 10 },
     presence: true
     validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }, length: { maximum: 40 },
     presence: true

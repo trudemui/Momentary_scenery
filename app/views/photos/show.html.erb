@@ -10,32 +10,46 @@
     </div>
     <div class="row">
         <div class="col-md-6">
+            <div class="tag">
+            <% @photo.tags.each do |tag| %>
+                <span class="badge badge-primary"><%= tag.name %></span>
+            <% end %>
+            </div>
             <table class="table table-bordered">
                 <tr>
-                    <th>ユーザー名</th>
+                    <th style="width:200px;">ユーザー名</th>
                     <td><%= @photo.user.nickname %></td>
                 </tr>
                 <tr>
-                    <th>タイトル</th>
+                    <th style="width:200px;">タイトル</th>
                     <td><%= @photo.title %></td>
                 </tr>
                 <tr>
-                    <th>本文</th>
+                    <th style="width:200px;">本文</th>
                     <td><%= @photo.caption %></td>
                 </tr>
                 <tr>
-                    <th>撮影地</th>
-                    <td><%= @photo.latitude %>,<%= @photo.longitude %></td>
+                    <th style="width:200px;">撮影地</th>
+                    <td><%= @photo.address %></td>
+                </tr>
+                <tr>
+                    <th style="width:200px;">緯度経度</th>
+                    <td class="place"><%= @photo.latitude %>,<%= @photo.longitude %></td>
                 </tr>
             </table>
-            <div class="favorite_btn">
+            <P>※画像にexifデータを持つ場合自動で緯度経度が入力されます。</P>
+            <div class="btn-space">
                         <div class="favorite-button-<%=@photo.id %>">
                             <%= render 'favorites/favorite', photo: @photo %>
+                        <% if @photo.user == current_user %>
+                            <%= link_to "削除", photo_path(@photo), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除してよろしいですか？" %>
+                            <%= link_to "編集", edit_photo_path(@photo), class: "btn btn-success" %>
+                        <% end %>
                         </div>
             </div>
         </div>
         <div class="col-md-6">
-            <input id="address" type="textbox" value="東京">
+            <input id="address" type="textbox" value="">
             <input type="button" value="Encode" onclick="codeAddress()">
             <div id="map"></div>
         </div>

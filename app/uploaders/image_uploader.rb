@@ -30,7 +30,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_limit: [200, 150]
+    process resize_to_limit: [300, 200]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -39,6 +39,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg png)
     # binding.pry
   end
+  
+  process :auto
+  def auto
+    manipulate! do |image|
+      image = image.auto_orient
+      image = yield(img) if block_given?
+      image
+    end
+  end
+
 
   process :get_exif_info
 

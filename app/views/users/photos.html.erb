@@ -1,16 +1,13 @@
 <div class="container">
-    <div class="row">
-        <% @photos.each do |photo| %>
-            <div class="col-md-3">
+        <div class="photo-index">
+            <% @photos.each do |photo| %>
                 <div class="photo-box">
-                    <%= image_tag photo.image.thumb.to_s %>
+                    <%= link_to photo_path(photo.id) do %>
+                        <%= image_tag photo.image.thumb.to_s %>
+                    <% end %>
                 </div>
-                <div class="photo-text">
-                    <%= link_to "#{photo.title}", photo_path(photo.id) %>
-                </div>
-            </div>
-        <% end %>
-    </div>
+            <% end %>
+        </div>
     <div class="top_button">
             <button class="button1"><%= link_to 'トップページへ戻る', root_path, data: {"turbolinks" => false} %></button>
         </div>

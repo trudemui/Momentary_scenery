@@ -10,14 +10,19 @@
   }
 
   .photo-box {
-    padding: 15px;
-    margin: 10px 0 0 10px;
+    padding: 5px;
+    margin: 5px 0 0 5px;
     display: inline-block;
+  }
+  .favorite-photo-box {
+    text-align: center;
+    margin: auto;
   }
   .text-box {
     text-align: center;
   }
   .favorite-rankings {
+    margin: 0 auto;
     padding: 5%;
     width: 180px;
     height: 180px;
@@ -35,6 +40,11 @@
     text-align: center;
     margin-top: 10px;
   }
+  .favorite-text {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
   .container {
     margin-top: 20px;
   }
@@ -43,4 +53,24 @@
   }
   .pagenate {
     text-align: center;
+  }
+  .box {
+    width: 350px;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+  }
+  .tag {
+    margin: 10px;
+  }
+  .photos_searchForm {
+    display: inline-block;
+  }
+
+  .photos_select {
+    display: inline-block;
+    width: auto;
   }

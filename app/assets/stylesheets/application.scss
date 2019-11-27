@@ -25,5 +25,13 @@
 
 #theTarget {
     text-align: center;
-    // background-image: image-url("background.jpg");
+    background-image: image-url("foucs.png");
+    background-repeat:  no-repeat;
+    background-position: center;
+    background-size: cover
     }
+.text {
+    position:  absolute;
+    top: 80px;
+    left: 150px;
+}

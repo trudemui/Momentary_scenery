@@ -22,16 +22,17 @@ let geocoder
 
 
 function initMap(){
-  // geocoderを初期化
+  // geocoderを初期化する
   geocoder = new google.maps.Geocoder()
-
+  place = { lat:Number($('.place').html().split(',')[0]), lng:Number($('.place').html().split(',')[1])}
   map = new google.maps.Map(document.getElementById('map'), {
-  center: {lat: 35.681236, lng: 139.767125},
+  center: place,
   zoom: 16
   });
   marker = new google.maps.Marker({
+  position: place,
   map: map,
-    osition: results[0].geometry.location
+  // position: results[0].geometry.location
   });
 }
 
@@ -46,6 +47,10 @@ function codeAddress(){
       map.setCenter(results[0].geometry.location);
 
 　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+  marker = new google.maps.Marker({
+  map: map,
+    osition: results[0].geometry.location
+  });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
