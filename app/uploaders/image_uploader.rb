@@ -58,7 +58,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     longitude = exif.properties["exif:GPSLongitude"]
     latitudeRef = exif.properties["exif:GPSLatitudeRef"]
     longitudeRef = exif.properties["exif:GPSLongitudeRef"]
-    binding.pry
     return latitude, longitude, latitudeRef, longitudeRef
   end
   # Override the filename of the uploaded files:

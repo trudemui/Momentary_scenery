@@ -8,7 +8,6 @@ class PhotosController < ApplicationController
     end
 
     def create
-        
         @photo = Photo.new(photo_params)
         @photo.user_id = current_user.id
         if @photo_latitude = @photo.image.get_exif_info[0]
