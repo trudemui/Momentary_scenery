@@ -71,7 +71,7 @@ gem 'paranoia'
 gem 'devise-i18n'
 gem 'rails-i18n'
 gem 'enum_help'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'geocoder'
 gem 'ransack'
 group :production do
