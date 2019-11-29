@@ -28,7 +28,10 @@
     </table>
                 </div>
     <div class="window1">
-    <%= link_to 'スレッドを作成する',new_board_path(@board) %>
+        <%= link_to 'スレッドを作成する',new_board_path(@board), class: 'btn btn-default' %>
     </div>
     <div class="paginate"><%= paginate @boards %></div>
+    <div class="top_button">
+        <%= link_to 'トップページへ戻る', root_path, class: 'btn btn-default', data: {"turbolinks" => false} %>
+    </div>
 </div>
