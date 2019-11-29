@@ -11,7 +11,6 @@
     <div class="row">
         <div class="col-md-6">
             <div class="tag">
-            <%= @photo.inspect %>
             <% @photo.tags.each do |tag| %>
                 <span class="badge badge-primary"><%= tag.name %></span>
             <% end %>
@@ -58,5 +57,4 @@
     <div class="top_button">
         <button class="button1"><%= link_to 'トップページへ戻る', root_path, data: {"turbolinks" => false} %></button>
     </div>
-    
 </div>

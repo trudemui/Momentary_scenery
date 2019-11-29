@@ -4,27 +4,26 @@ class PhotosController < ApplicationController
 
     def new
         @photo = Photo.new(params[:id])
-        # binding.pry
     end
 
     def create
         @photo = Photo.new(photo_params)
         @photo.user_id = current_user.id
         if @photo_latitude = @photo.image.get_exif_info[0]
-        @cut_latitude = @photo_latitude.split(",")
-        @num_latitude = @cut_latitude.map!(&:to_i)
-        @a = @cut_latitude.map!(&:to_i).first
-        @b = @cut_latitude.map!(&:to_i).second
-        @c = @cut_latitude.map!(&:to_i).third
-        @photo.latitude = @a/1 + @b/60.to_f + @c/3600000.to_f
-        @photo_longitude = @photo.image.get_exif_info[1]
-        @cut_longitude = @photo_longitude.split(",")
-        @num_longitude = @cut_longitude.map!(&:to_i)
-        @d = @cut_longitude.map!(&:to_i).first
-        @e = @cut_longitude.map!(&:to_i).second
-        @f = @cut_longitude.map!(&:to_i).third
-        @photo.longitude = @d/1 + @e/60.to_f + @f/3600000.to_f
-        @photo.save
+            @cut_latitude = @photo_latitude.split(",")
+            @num_latitude = @cut_latitude.map!(&:to_i)
+            @a = @cut_latitude.map!(&:to_i).first
+            @b = @cut_latitude.map!(&:to_i).second
+            @c = @cut_latitude.map!(&:to_i).third
+            @photo.latitude = @a/1 + @b/60.to_f + @c/3600000.to_f
+            @photo_longitude = @photo.image.get_exif_info[1]
+            @cut_longitude = @photo_longitude.split(",")
+            @num_longitude = @cut_longitude.map!(&:to_i)
+            @d = @cut_longitude.map!(&:to_i).first
+            @e = @cut_longitude.map!(&:to_i).second
+            @f = @cut_longitude.map!(&:to_i).third
+            @photo.longitude = @d/1 + @e/60.to_f + @f/3600000.to_f
+            @photo.save
         else
         @photo.save
         end
