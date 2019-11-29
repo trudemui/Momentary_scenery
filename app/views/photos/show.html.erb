@@ -15,29 +15,31 @@
                 <span class="badge badge-primary"><%= tag.name %></span>
             <% end %>
             </div>
-            <table class="table table-bordered">
-                <tr>
-                    <th style="width:200px;">ユーザー名</th>
-                    <td><%= @photo.user.nickname %></td>
-                </tr>
-                <tr>
-                    <th style="width:200px;">タイトル</th>
-                    <td><%= @photo.title %></td>
-                </tr>
-                <tr>
-                    <th style="width:200px;">本文</th>
-                    <td><%= @photo.caption %></td>
-                </tr>
-                <tr>
-                    <th style="width:200px;">撮影地</th>
-                    <td><%= @photo.address %></td>
-                </tr>
-                <tr>
-                    <th style="width:200px;">緯度経度</th>
-                    <td class="place"><%= @photo.latitude %>,<%= @photo.longitude %></td>
-                </tr>
-            </table>
-            <P>※画像にexifデータを持つ場合自動で緯度経度が入力されます。</P>
+            <div class="box3">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:200px;">ユーザー名</th>
+                        <td><%= @photo.user.nickname %></td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;">タイトル</th>
+                        <td><%= @photo.title %></td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;">本文</th>
+                        <td><%= @photo.caption %></td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;">撮影地</th>
+                        <td><%= @photo.address %></td>
+                    </tr>
+                    <tr>
+                        <th style="width:200px;">緯度経度</th>
+                        <td class="place"><%= @photo.latitude %>,<%= @photo.longitude %></td>
+                    </tr>
+                </table>
+                <P>※画像にexifデータを持つ場合自動で緯度経度が入力されます。</P>
+            </div>
             <div class="btn-space">
                         <div class="favorite-button-<%=@photo.id %>">
                             <%= render 'favorites/favorite', photo: @photo %>

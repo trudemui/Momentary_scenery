@@ -1,7 +1,9 @@
 class BoardsController < ApplicationController
+  PER = 20
 
   def index
-    @boards = Board.all
+    @boards = Board.all.order(created_at: :desc)
+    @boards = @boards.page(params[:page]).per(PER)
   end
 
   def show

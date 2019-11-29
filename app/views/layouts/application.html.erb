@@ -10,9 +10,10 @@
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
     <script src="/assets/skippr-3a814c9d75cb31c108333176c9525299c3ef65cb16751b43b71e0f0e659f7b40.js"></script>
+    <%# <script src="assets/skippr.js"></script> %>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAh9nDJL4r1JF_nO9kXqwWtSBQSnjPIp_I&callback=initMap" async defer></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
   </head>
   <header class="clearfix">
     <div class="logo">
@@ -53,6 +54,17 @@
   </div>
   <% end %>
   <body>
-    <%= yield %>
+    <div class="background">
+      <div class="backsupport">
+        <%= yield %>
+      </div>
+    </div>
+    <footer class="footer-style">
+        <div class="container">
+          <div class="row">
+            <p class="text-center">CopyRight momentary_scenely.inc</p>
+          </div>
+        </div>
+    </footer>
   </body>
 </html>

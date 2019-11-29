@@ -9,13 +9,15 @@
                         }
         %>
     <% end %>
-    <h2>写真一覧</h2>
-        <% @photos.each do |photo| %>
-            <div class="photo-box">
-                    <%= link_to photo_path(photo.id) do %>
-                        <%= image_tag photo.image.thumb.to_s %>
-                    <% end %>
-            </div>
-        <% end %>
-    <div class="paginate"><%= paginate @photos %></div>
+    <div class="box3">
+        <h2 style="margin: 10px">写真一覧</h2>
+            <% @photos.each do |photo| %>
+                <div class="photo-box">
+                        <%= link_to photo_path(photo.id) do %>
+                            <%= image_tag photo.image.thumb.to_s %>
+                        <% end %>
+                </div>
+            <% end %>
+        <div class="paginate"><%= paginate @photos %></div>
+    </div>
 </div>

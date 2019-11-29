@@ -1,34 +1,34 @@
 <div class="container">
-    <div class="panel panel-default">
+    <div class="panel panel-default", style="margin: 10px 0px 10px 0px">
       <h2>掲示板</h2>
         <p>写真の取り方や、おすすめスポットなどなど写真や景色に関わることを質問できる掲示板です。<br>
         掲示板は訪問者の友好や情報交換のために存在しています。 誹謗・中傷などの書き込みはしないでください。</p>
     </div>
+                <div class="box4">
     <table class="table table-bordered" style="table-layout:fixed;">
         <thead>
             <tr>
                 <th>タイトル</th>
-                <th>投稿者</th>
-                <th>作成時間</th>
-                <th>更新時間</th>
+                <th style="width:200px;">投稿者</th>
+                <th style="width:400px;">作成時間</th>
             </tr>
         </thead>
         <tbody>
             <% @boards.each do |board|%>
-                <div class="row">
                     <tr>
                         <td><%= link_to board_path(board.id) do %>
                             <%= board.title %>
                             <% end %></td>
-                        <td><%= board.name %></td>
-                        <td><%= board.created_at.to_s(:datetime_jp) %></td>
-                        <td><%= board.updated_at.to_s(:datetime_jp) %></td>
+                        <td style="width:200px;"><%= board.name %></td>
+                        <td style="width:400px;"><%= board.created_at.to_s(:datetime_jp) %></td>
                     </tr>
-                </div>
             <% end %>
+            </div>
         </tbody>
     </table>
+                </div>
     <div class="window1">
     <%= link_to 'スレッドを作成する',new_board_path(@board) %>
     </div>
+    <div class="paginate"><%= paginate @boards %></div>
 </div>
