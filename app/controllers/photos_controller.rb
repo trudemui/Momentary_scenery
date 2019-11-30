@@ -13,17 +13,17 @@ class PhotosController < ApplicationController
         if @photo_latitude = @photo.image.get_exif_info[0]
             @cut_latitude = @photo_latitude.split(",")
             @num_latitude = @cut_latitude.map!(&:to_i)
-            @a = @cut_latitude.map!(&:to_i).first
-            @b = @cut_latitude.map!(&:to_i).second
-            @c = @cut_latitude.map!(&:to_i).third
-            @photo.latitude = @a/1 + @b/60.to_f + @c/3600000.to_f
+            @latdegree = @cut_latitude.map!(&:to_i).first
+            @latminute = @cut_latitude.map!(&:to_i).second
+            @latsecond = @cut_latitude.map!(&:to_i).third
+            @photo.latitude = @latdegree/1 + @latminute/60.to_f + @latsecond/3600000.to_f
             @photo_longitude = @photo.image.get_exif_info[1]
             @cut_longitude = @photo_longitude.split(",")
             @num_longitude = @cut_longitude.map!(&:to_i)
-            @d = @cut_longitude.map!(&:to_i).first
-            @e = @cut_longitude.map!(&:to_i).second
-            @f = @cut_longitude.map!(&:to_i).third
-            @photo.longitude = @d/1 + @e/60.to_f + @f/3600000.to_f
+            @londegree = @cut_longitude.map!(&:to_i).first
+            @lonminute = @cut_longitude.map!(&:to_i).second
+            @lonsecond = @cut_longitude.map!(&:to_i).third
+            @photo.longitude = @londegree/1 + @lonminute/60.to_f + @lonsecond/3600000.to_f
             @photo.save
         else
         @photo.save
