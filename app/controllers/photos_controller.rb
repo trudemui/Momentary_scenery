@@ -10,14 +10,26 @@ class PhotosController < ApplicationController
     def create
         @photo = Photo.new(photo_params)
         @photo.user_id = current_user.id
-        if @photo_latitude = @photo.image.get_exif_info[0]
+
+	@photo_latitude = if Rails.env.production?
+            @photo.image.get_exif_info[0][0][1]
+        else
+            @photo.image.get_exif_info[0] 
+        end
+
+
+        if @photo_latitude
             @cut_latitude = @photo_latitude.split(",")
             @num_latitude = @cut_latitude.map!(&:to_i)
             @a = @cut_latitude.map!(&:to_i).first
             @b = @cut_latitude.map!(&:to_i).second
             @c = @cut_latitude.map!(&:to_i).third
             @photo.latitude = @a/1 + @b/60.to_f + @c/3600000.to_f
-            @photo_longitude = @photo.image.get_exif_info[1]
+            @photo_longitude = if Rails.env.production?
+		@photo.image.get_exif_info[1][0][1]
+            else
+                @photo.image.get_exif_info[1]
+            end
             @cut_longitude = @photo_longitude.split(",")
             @num_longitude = @cut_longitude.map!(&:to_i)
             @d = @cut_longitude.map!(&:to_i).first
@@ -39,9 +51,8 @@ class PhotosController < ApplicationController
     
     def show
         @photo = Photo.find(params[:id])
+
         # @power = @a/1 + @b/60.to_f + @c/3600000.to_f
-
-
         # @photo.user_id = current_user.id
     end
 

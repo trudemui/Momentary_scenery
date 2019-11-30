@@ -54,11 +54,20 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def get_exif_info
     exif = Magick::Image.read(self.file.file).first
-    latitude = exif.properties["exif:GPSLatitude"]
-    longitude = exif.properties["exif:GPSLongitude"]
-    latitudeRef = exif.properties["exif:GPSLatitudeRef"]
-    longitudeRef = exif.properties["exif:GPSLongitudeRef"]
-    return latitude, longitude, latitudeRef, longitudeRef
+
+    latitude = if Rails.env.production?
+        exif.get_exif_by_entry("GPSLatitude")
+    else
+        exif.properties["exif:GPSLatitude"]
+    end
+
+    longitude = if Rails.env.production?
+        exif.get_exif_by_entry("GPSLongitude")
+    else
+        exif.properties["exif:GPSLongitude"]
+    end
+
+    return latitude, longitude
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
